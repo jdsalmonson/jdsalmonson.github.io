@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LPC Maker class - Making Makers
+title: LPC Maker class: Making Makers
 categories: [Robotics]
 ---
 
