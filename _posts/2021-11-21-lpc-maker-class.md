@@ -8,7 +8,7 @@ categories: [Robotics]
 
 LPC Maker arduino bot      |  rear view with joystick
 :-------------------------:|:-------------------------:
-![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg) | ![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg)
+![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg) Note rubber bands around wheels for friction | ![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg)
 
 [Laser Cutter CAD template](https://github.com/jdsalmonson/LPCMakerClass/blob/master/Robot1/Robot1c_flattened.svg)
 ![Laser Cutter CAD template](../images/LPC_laser_cut_template.png)
