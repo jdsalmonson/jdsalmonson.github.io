@@ -8,8 +8,9 @@ categories: [Robotics]
 
 [Link to robot design and fritzing files](https://github.com/jdsalmonson/LPCMakerClass/tree/master/Robot1)
 
-![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg)
+LPC Maker arduino bot      |  rear view
+:-------------------------:|:-------------------------:
+![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg) | ![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg)
 
-![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg)
 
 ![Laser Cutter CAD template](https://github.com/jdsalmonson/LPCMakerClass/blob/master/Robot1/Robot1c_flattened.svg)
