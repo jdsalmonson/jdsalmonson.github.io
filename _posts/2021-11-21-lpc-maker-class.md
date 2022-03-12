@@ -6,9 +6,9 @@ categories: [Robotics]
 
 [LPCMakerClass](https://jdsalmonson.github.io/LPCMakerClass/) is the web page for a class I created and taught with Andrew Lozano in Spring 2016 at [Las Positas College](http://www.laspositascollege.edu) as part of the community education offerings.  The course was a whirlwind tour bootstrapping from basic electromagnetics to motors to electronic controllers to robots.  The students each fabricated and built and programmed an Arduino robot.  Course tuition included the purchase of an electronics starter kit with components necessary for building the projects covered in the course, including an Arduino controlled robot ([design and fritzing files here](https://github.com/jdsalmonson/LPCMakerClass/tree/master/Robot1)). The robot could run in several variations including phototropic mode; seeking light sensed by photo-resistors, or controlled by joystick.  Tuition also included an introductory three month student membership to the [Robot Garden](https://www.robotgarden.org/) maker space, including access to its facilities including laser cutter and 3D printers.  
 
-LPC Maker arduino bot      |  rear view with joystick
-:-------------------------:|:-------------------------:
-Note rubber bands around wheels for friction ![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg) | ![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg)
+| LPC Maker arduino bot      |  rear view with joystick |
+| :-------------------------:|:-------------------------: |
+| Note rubber bands around wheels for friction ![LPC Maker arduino bot](../images/LPC_maker_arduino_bot1.jpg) | ![LPC Maker arduino bot rear view](../images/LPC_maker_arduino_bot2.jpg) |
 
 [Laser Cutter CAD template](https://github.com/jdsalmonson/LPCMakerClass/blob/master/Robot1/Robot1c_flattened.svg)
 ![Laser Cutter CAD template](../images/LPC_laser_cut_template.png)
