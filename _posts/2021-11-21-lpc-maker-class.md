@@ -13,11 +13,11 @@ categories: [Robotics]
   </tr>
   <tr>
     <td style="text-align:center">
-      <img src="../images/LPC_maker_arduino_bot1.jpg"/>
+      <a href="../images/LPC_maker_arduino_bot1.jpg" ><img src="../images/LPC_maker_arduino_bot1.jpg"/></a>
       <figcaption>Note rubber bands around wheels for friction</figcaption>
     </td>
     <td style="text-align:center">
-      <img src="../images/LPC_maker_arduino_bot2.jpg"/>
+      <a href="../images/LPC_maker_arduino_bot2.jpg" ><img src="../images/LPC_maker_arduino_bot2.jpg"/></a>
     </td>
   </tr>
 </table>
