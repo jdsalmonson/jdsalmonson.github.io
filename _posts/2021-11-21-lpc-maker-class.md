@@ -12,11 +12,11 @@ categories: [Robotics]
     <th> rear view with joystick </th>
   </tr>
   <tr>
-    <td style="text-align:center">
+    <td valign="top">
       <figcaption>Note rubber bands around wheels for friction</figcaption>
       <a href="../images/LPC_maker_arduino_bot1.jpg" ><img src="../images/LPC_maker_arduino_bot1.jpg"/></a>
     </td>
-    <td style="text-align:center">
+    <td valign="top">
       <a href="../images/LPC_maker_arduino_bot2.jpg" ><img src="../images/LPC_maker_arduino_bot2.jpg"/></a>
     </td>
   </tr>
