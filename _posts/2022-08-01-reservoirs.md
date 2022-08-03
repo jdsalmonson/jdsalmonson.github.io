@@ -7,5 +7,5 @@ categories: [Robotics]
 I've found reservoir computing interesting for a long time.  
 
 $$
-s_{t+1} = (1 - \alpha) s_t + \alpha (W s_t + W_{\text{in}} u_t)
+\textcolor{blue}{s}_{t+1} = (1 - \alpha) \textcolor{blue}{s}_t + \alpha (\textcolor{blue}{W} \textcolor{blue}{s}_t + \textcolor{blue}{W}_{\text{in}} u_t)
 $$
