@@ -4,7 +4,7 @@ title: LPC Maker class - Making Makers
 categories: [Robotics]
 ---
 
-[<img src="../images/making_makers_viewgraph.png" width="1000"/>](making_makers_viewgraph.png)
+[<img src="../images/making_makers/making_makers_viewgraph.png" width="1000"/>](making_makers_viewgraph.png)
 
 [LPCMakerClass](https://jdsalmonson.github.io/LPCMakerClass/) is the web page for a class I created and taught with Andrew Lozano in Spring 2016 at [Las Positas College](http://www.laspositascollege.edu) as part of the community education offerings.  The course was a whirlwind tour, bootstrapping from basic electromagnetics to motors to electronic controllers to robots.  The students each fabricated and built and programmed an Arduino robot.  Course tuition included the purchase of an electronics starter kit I was able source from Amazon.  The kit had all the components necessary for building the projects covered in the course, including an Arduino controlled robot ([design and fritzing files here](https://github.com/jdsalmonson/LPCMakerClass/tree/master/Robot1)). The robot could run in several variations including phototropic mode; seeking light sensed by photo-resistors, or controlled by joystick.  Tuition also included an introductory three month student membership to the [Robot Garden](https://www.robotgarden.org/) maker space, including access to its facilities including laser cutter and 3D printers.  
 
@@ -16,10 +16,10 @@ categories: [Robotics]
   <tr>
     <td style="vertical-align: top">
       <figcaption>Note rubber bands around wheels for friction</figcaption>
-      <a href="../images/LPC_maker_arduino_bot1.jpg" ><img src="../images/LPC_maker_arduino_bot1.jpg"/></a>
+      <a href="../images/making_makers/LPC_maker_arduino_bot1.jpg" ><img src="../images/making_makers/LPC_maker_arduino_bot1.jpg"/></a>
     </td>
     <td style="vertical-align: top">
-      <a href="../images/LPC_maker_arduino_bot2.jpg" ><img src="../images/LPC_maker_arduino_bot2.jpg"/></a>
+      <a href="../images/making_makers/LPC_maker_arduino_bot2.jpg" ><img src="../images/making_makers/LPC_maker_arduino_bot2.jpg"/></a>
     </td>
   </tr>
 </table>
