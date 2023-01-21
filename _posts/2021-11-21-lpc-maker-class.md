@@ -25,7 +25,7 @@ categories: [Robotics]
 </table>
 
 [Laser Cutter CAD template](https://github.com/jdsalmonson/LPCMakerClass/blob/master/Robot1/Robot1c_flattened.svg)
-![Laser Cutter CAD template](../images/LPC_laser_cut_template.png)
+![Laser Cutter CAD template](../images/making_makers/LPC_laser_cut_template.png)
 
 [wiring diagram of photo-resistors driving wheel motor via H-bridge](https://github.com/jdsalmonson/LPCMakerClass/blob/master/Robot1/Robot1_H-Bridge_PhotoResistorWiring_9Volt.png)
 ![Wiring diagram of photo-resistors driving motor](https://github.com/jdsalmonson/LPCMakerClass/raw/master/Robot1/Robot1_H-Bridge_PhotoResistorWiring_9Volt.png)
