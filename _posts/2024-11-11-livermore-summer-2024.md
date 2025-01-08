@@ -1,0 +1,70 @@
+---
+layout: post
+title: Livermore Summer 2024: Hot August Nights
+categories: [Physics, Livermore]
+---
+
+# Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.
+
+## Abstract
+
+*In Livermore, CA the summer quarter of 2024, specifically July through September, had more excessively warm evenings than any quarter over the last 20 years.  These warm evenings, defined as having a temperature at 9 o'clock in the evening that is 10° Fahrenheit above the mean temperature at 9 PM on that date, are typically indicative of high pressure that keeps the cooling ocean breezes at bay.  While such occasional warm, high pressure evenings have always been a feature of Livermore weather, it appears that such evenings are more common over the last decade (2014 - 2024) than the decade prior (2004 - 2014).  Furthermore, the frequency of these warm evenings correlates with the surface temperature of the Pacific Ocean off the San Francisco coast.*
+
+| Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.|
+|:--:|
+| [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png) |
+| *Number of evenings per quarter exceeding the seasonal mean by more than 10°F.  The summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the multi-year drought of 2014-2017.  Also, exceptional ocean surface temperatures off the coast of California generally correlate with frequency of warm evenings.* |
+
+---
+
+## Air Temperature
+
+It sure seemed like a hot summer this year, 2024.  Although relatively few high temperature records were broken in my famously hot town of Livermore, California, there seemed to be a surplus of hot days that stayed hot into the evening and through the night, barely cooling to room temperature by morning before being baked again by the rising sun.  This forced my household to run our air conditioning through the night more than we wanted and also forced me to reschedule my runs from the afternoon, when I've been accustomed to a pleasant turn down in the temprature, to the morning hours in order to beat the heat.  Upon relating my alarm about this anomalously warm season to a couple kronies, I was surprised that they didn't share my same impression and didn't think this summer particularly stood out.  Had I imagined it?  Am I getting soft in my middle age -- no longer able to endure the Livermore summers I've experienced for nearly 30 years?  Or do my friends just need to get out more?  I decided that I needed to crunch some numbers to find out.
+
+Livermore is known for its blistering hot summer days with temperatures often in triple digits.  However, we also benefit from being located 40 miles inland from the Pacific Ocean from which a cooling westerly breeze will often arise in the afternoon, drawing in a cool marine layer of moist air that can drop the temperature from tank-top to jacket weather within a couple of hours.  A cool evening makes for a pleasantly cool night and morning before the next day's sun drives up the mercury again.  This cycle of hot days and cool nights has always been interspersed by the occasional warm evening, where high pressure prevents the cool marine layer from flowing inland, keeping our town enveloped in the warm, continental air mass.  Such warm evenings can make it difficult to sleep, but have historically been relatively rare, so air conditioning wasn't seen as a necessity.
+
+These warm, high pressure evenings have become noticeably more common in Livermore over the years.  For nearly 30 years I would bike home from work in the afternoons, westward across town.  In the early days of this routine I would ride in a tucked position against a stout, sometimes brisk headwind of the incoming marine layer.  Over the course of that quarter century, a growing proportion of those rides have been gradually replaced by calmer, warmer (sometimes hot) rides home.  
+
+I wanted to quantify the frequency of warm evenings in Livermore over the last 20 years.  These are evenings distinguished by warm, stagnant air, due to high-pressure, that don't cool off appreciably at sunset and can stay uncomfortably warm (in the absence of air conditioning) throughout the night.  To do this, I downloaded hourly temperatures over the last 20 years from the Livermore Airport (LVK) from [NOAA](https://www.ncei.noaa.gov/access/search/data-search/local-climatological-data-v2?bbox=37.740,-121.823,37.612,-121.695&pageNum=2&dataTypes=HourlyDryBulbTemperature&dataTypes=HourlyWetBulbTemperature&dataTypes=MonthlyMaximumTemperature&dataTypes=MonthlyMeanTemperature&dataTypes=MonthlyMinimumTemperature&startDate=2024-01-01T00:00:00&endDate=2024-10-01T23:59:59).  I then used the daily air temperature at 9pm (past sunset) as a measure of these warm conditions.  I calculated a 5-day rolling mean and standard deviation of this daily temperature, averaged over 20 years, from 2004 to 2024.  I could then identify the days that significantly exceeded this mean.  I define these warm, high-pressure days as ones that exceeds the mean on that date by 10° Fahrenheit, which is a significant departure at roughly twice the standard deviation.
+
+
+
+
+| Seasonal evening temperature distribution at the Livermore Airport |
+|:--:|
+| [![temp_statistics.png](../images/livermore_summer_2024/temp_statistics.png)](../images/livermore_summer_2024/temp_statistics.png) |
+| *Daily mean temperature at 9 PM, taken over a 5 day rolling window, and its standard deviation.  Note that the standard deviation is about ±5° F.* |
+
+| Selected Epochs of Seasonal Evening (9 PM) Temperature Excursions Taken at the Livermore Airport over the Last 20 Years |
+|:--:|
+| [![temps_2021-24.png](../images/livermore_summer_2024/temps_2021-24.png)](../images/livermore_summer_2024/temps_2021-24.png) |
+| *2021-2024: recent years, although not drought years, show numerous warm evening temperature excursions including a couple called out broken records.* |
+| [![temps_2014-17.png](../images/livermore_summer_2024/temps_2014-17.png)](../images/livermore_summer_2024/temps_2014-17.png) |
+| *2014-2017: a period of extended drought also had numerous warm evening temperature excursions.  (Note that 2016 had fewer excursions that the other years in this period and was more typical.)* |
+| [![temps_2004-06.png](../images/livermore_summer_2024/temps_2004-06.png)](../images/livermore_summer_2024/temps_2004-06.png) |
+| *2004-2006: for comparison, the first few years of the 20 history exhibit relatively few large temperature excursions (> 10°F above the mean) and the distribution of temperatures is well bracketed by the standard deviation about the mean.* |
+
+
+I then binned the number of excessively warm evenings by year.  This figure (below) immediately highlights the years 2014, 2015, and 2017 as banner years for number of warm evenings.  These years correspond to a multi-year drought in California.  Further, I would argue that this figure suggests a general upward trend the number of warm evenings over the last 20 years.  
+
+| Seasonal evening temperature distribution at the Livermore Airport |
+|:--:|
+| [![temps_annual.png](../images/livermore_summer_2024/temps_annual.png)](../images/livermore_summer_2024/temps_annual.png) |
+| *Annual number of days exceeding the seasonal mean by more than 10°F.  Note that the record for 2024 ends in October and so does not represent a complete year.* |
+| [![temps_quarterly.png](../images/livermore_summer_2024/temps_quarterly.png)](../images/livermore_summer_2024/temps_quarterly.png) |
+| *Number of days per quarter exceeding the seasonal mean by more than 10°F.  The key point is that the summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the period of drought: 2014-2017.* |
+
+
+## Ocean Temperature 
+
+Ocean temperatures are known to have significant impact on the weather, so I downloaded 20 years of ocean surface temeperature for buoy #46214 bobbing off the coast of San Francisco at the edge of the continental shelf.  I followed a similar 5-day rolling mean window to calculate a smoothed daily mean seasonal ocean temperature profile.  In order to quantify how often the ocean temperature significantly deviates from the mean, I calculated the percentage of days per month that exceed mean on that date by more than a standard deviation.  It is interesting to note the seasonal cycle in this data; summers have more days that exceed the mean than do winters.  * This may seem counter intuitive (how can all children be above average, as they are said to be in Lake Wobegon?), but this occurs because ocean temperatures *
+
+
+| Ocean Buoy #46214 Temperature Log |
+|:--:|
+| [![ocean_temp_statistics.png](../images/livermore_summer_2024/ocean_temp_statistics.png)](../images/livermore_summer_2024/ocean_temp_statistics.png) |
+| *Daily mean ocean surface temperature, taken over a 5 day rolling window, and its standard deviation.*  |
+| [![ocean_buoy_temps.png](../images/livermore_summer_2024/ocean_buoy_temps.png)](../images/livermore_summer_2024/ocean_buoy_temps.png) |
+| *The monthly percentage [%] of days that exceed the mean seasonal ocean temperature by one standard deviation (i.e. percent of days 1-sigma above the mean) for 20 years of temperature data taken from ocean buoy #46214 off the coast from San Francisco. *  |
+
+
