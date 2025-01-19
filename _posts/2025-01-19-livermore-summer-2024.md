@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Livermore Summer 2024: Hot August Nights
+title: Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.
 categories: [Physics, Climate, Livermore]
 ---
 
-# Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.
+<!-- # Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA. -->
 
 | Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.|
 |:--:|
@@ -27,6 +27,7 @@ These warm, high pressure evenings have become noticeably more common in Livermo
 
 I wanted to quantify the frequency of warm evenings in Livermore over the last 20 years.  These are evenings distinguished by warm, stagnant air, due to high-pressure, that don't cool off appreciably at sunset and can stay uncomfortably warm (in the absence of air conditioning) throughout the night.  To do this, I downloaded hourly temperatures over the last 20 years from the Livermore Airport (LVK) from [NOAA](https://www.ncei.noaa.gov/access/search/data-search/local-climatological-data-v2?bbox=37.740,-121.823,37.612,-121.695&pageNum=2&dataTypes=HourlyDryBulbTemperature&dataTypes=HourlyWetBulbTemperature&dataTypes=MonthlyMaximumTemperature&dataTypes=MonthlyMeanTemperature&dataTypes=MonthlyMinimumTemperature&startDate=2024-01-01T00:00:00&endDate=2024-10-01T23:59:59).  I then used the daily air temperature at 9pm (past sunset) as a measure of these warm conditions.  I calculated a 5-day rolling mean and standard deviation of this daily temperature, averaged over 20 years, from 2004 to 2024.  I could then identify the days that significantly exceeded this mean.  I define these warm, high-pressure days as ones that exceed the mean on that date by 10° Fahrenheit, which is a significant departure at roughly twice the standard deviation.
 
+<!--  HTML version of below.  Probably don't need it.
 <div style="text-align: center;">
     <p><strong>Daily mean temperature distribution at the Livermore Airport</strong></p>
     <a href="../images/livermore_summer_2024/temp_statistics.png">
@@ -34,13 +35,12 @@ I wanted to quantify the frequency of warm evenings in Livermore over the last 2
     </a>
     <p><em>Daily mean temperature at 9 PM, taken over a 5 day rolling window, and its standard deviation. Note that the standard deviation is about ±5° F.</em></p>
 </div>
+-->
 
-<!--  Using HTML above instead of this markdown because it wasn't centering reliably.
 | Daily mean temperature distribution at the Livermore Airport |
 |:---------------------------------------------------:|
 | [![temp_statistics.png](../images/livermore_summer_2024/temp_statistics.png)](../images/livermore_summer_2024/temp_statistics.png) |
 | *Daily mean temperature at 9 PM, taken over a 5 day rolling window, and its standard deviation.  Note that the standard deviation is about ±5° F.* |
--->
 
 | Selected Epochs of Seasonal Evening (9 PM) Temperature Excursions Taken at the Livermore Airport over the Last 20 Years |
 |:--:|
