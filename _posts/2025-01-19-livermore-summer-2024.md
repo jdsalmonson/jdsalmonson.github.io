@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.
+title: 'Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.'
 categories: [Physics, Climate, Livermore]
 ---
 
