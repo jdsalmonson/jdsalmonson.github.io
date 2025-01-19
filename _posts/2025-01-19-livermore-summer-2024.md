@@ -5,7 +5,6 @@ categories: [Physics, Climate, Livermore]
 ---
 
 [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)
-> Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.
 
 <!-- # Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA. -->
 
