@@ -4,12 +4,10 @@ title: 'Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.'
 categories: [Physics, Climate, Livermore]
 ---
 
-<!-- # Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA. -->
+[![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)
+> Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.
 
-| Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.|
-|:--:|
-| [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png) |
-| *Number of evenings per seasonal quarter exceeding the mean on that date by more than 10°F.  The summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the multi-year drought of 2014-2017.  Also, exceptional ocean surface temperatures off the coast of California generally correlate with frequency of warm evenings.* |
+<!-- # Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA. -->
 
 ## Abstract
 
@@ -80,7 +78,12 @@ One key take-away from this data is that there were extended periods of unusuall
 ## Summary
 
 Combining the seasonal, quarterly air temperature data at Livermore Airport with the ocean temperature data of buoy #46214 gives the plot 
-shown at the top of this post.  By-eye, this plot seems to suggest a correlation between the frequency of occurence of exceptionally warm air and ocean temperatures.  To be more quantitative would require more data from more airports and buoys and would be well beyond the scope of this blog post.  Such effects have been studied in detail elsewhere.  But it is insightful to look back on a generation of data from one geographic location and see how things have changed.  Much like how an individual standing on the surface of the Earth can scarcely perceive its curvature, our local, myopic experience of climate change is barely able to discern its ponderous, inertial movement.
+shown below.  By-eye, this plot seems to suggest a correlation between the frequency of occurence of exceptionally warm air and ocean temperatures.  To be more quantitative would require more data from more airports and buoys and would be well beyond the scope of this blog post.  Such effects have been studied in detail elsewhere.  But it is insightful to look back on a generation of data from one geographic location and see how things have changed.  Much like how an individual standing on the surface of the Earth can scarcely perceive its curvature, our local, myopic experience of climate change is barely able to discern its ponderous, inertial movement.
+
+| Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.|
+|:--:|
+| [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png) |
+| *Number of evenings per seasonal quarter exceeding the mean on that date by more than 10°F.  The summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the multi-year drought of 2014-2017.  Also, exceptional ocean surface temperatures off the coast of California generally correlate with frequency of warm evenings.* |
 
 The point of this exercise is to quantify my perception that the summer of 2024 was particularly warm.  Indeed, this summer had the most extreme temperature days (15) of any season over the last 20 years (followed by 14 days in the summer of 2020 and 12 to 13 days each in various seasons of drought years 2013, 2014, 2015, 2017).  Out of curiosity, I also compared this to extrema in offshore ocean surface temperatures.  By eye, strong ocean temperature warming excursions during the aforementioned drought years as well as the 2023/2024 Winter months appear to correlate with the frequency of warm summer days in Livermore.  While this correlation is interesting and suggestive of a plausible link between offshore ocean and Livermore air temperatures, it isn't possible to draw hard conclusions from it.
 
