@@ -2,6 +2,7 @@
 layout: post
 title: 'Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.'
 categories: [Physics, Climate, Livermore]
+image: ../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png
 ---
 
 [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)

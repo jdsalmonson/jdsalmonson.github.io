@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Solo Bike Tour to Santa Barabara
-categories: [Bicycle]
+categories: [Cycling]
+image: ../images/bike_tour_uscb_2024_pano_small.jpeg
 ---
 
 <div style="width: 100%; overflow-x: auto;">
