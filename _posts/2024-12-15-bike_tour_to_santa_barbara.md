@@ -2,11 +2,11 @@
 layout: post
 title: Solo Bike Tour to Santa Barabara
 categories: [Cycling]
-image: ../images/bike_tour_uscb_2024_pano_small.jpeg
+image: /assets/images/bike_tour_uscb_2024_pano_small.jpeg
 ---
 
 <div style="width: 100%; overflow-x: auto;">
-    <img src="../images/bike_tour_uscb_2024_pano_small.jpeg" alt="Panoramic view over King City, CA" style="width: 100%; max-width: none;">
+    <img src="/assets/images/bike_tour_uscb_2024_pano_small.jpeg" alt="Panoramic view over King City, CA" style="width: 100%; max-width: none;">
 </div>
 A panorama overlooking the Salinas Valley before heading down into King City
 

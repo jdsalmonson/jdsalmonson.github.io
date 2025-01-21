@@ -2,10 +2,10 @@
 layout: post
 title: 'Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA.'
 categories: [Physics, Climate, Livermore]
-image: ../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png
+image: /assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png
 ---
 
-[![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)
+[![temps_quarterly_w_ocean_buoy.png](/assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](/assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)
 
 <!-- # Summer Bummer: Quantifying the Hot Summer of 2024 in Livermore, CA. -->
 
@@ -28,8 +28,8 @@ I wanted to quantify the frequency of warm evenings in Livermore over the last 2
 <!--  HTML version of below.  Probably don't need it.
 <div style="text-align: center;">
     <p><strong>Daily mean temperature distribution at the Livermore Airport</strong></p>
-    <a href="../images/livermore_summer_2024/temp_statistics.png">
-        <img src="../images/livermore_summer_2024/temp_statistics.png" alt="Temperature Statistics">
+    <a href="/assets/images/livermore_summer_2024/temp_statistics.png">
+        <img src="/assets/images/livermore_summer_2024/temp_statistics.png" alt="Temperature Statistics">
     </a>
     <p><em>Daily mean temperature at 9 PM, taken over a 5 day rolling window, and its standard deviation. Note that the standard deviation is about ±5° F.</em></p>
 </div>
@@ -37,16 +37,16 @@ I wanted to quantify the frequency of warm evenings in Livermore over the last 2
 
 | Daily mean temperature distribution at the Livermore Airport |
 |:---------------------------------------------------:|
-| [![temp_statistics.png](../images/livermore_summer_2024/temp_statistics.png)](../images/livermore_summer_2024/temp_statistics.png) |
+| [![temp_statistics.png](/assets/images/livermore_summer_2024/temp_statistics.png)](/assets/images/livermore_summer_2024/temp_statistics.png) |
 | *Daily mean temperature at 9 PM, taken over a 5 day rolling window, and its standard deviation.  Note that the standard deviation is about ±5° F.* |
 
 | Selected Epochs of Seasonal Evening (9 PM) Temperature Excursions Taken at the Livermore Airport over the Last 20 Years |
 |:--:|
-| [![temps_2021-24.png](../images/livermore_summer_2024/temps_2021-24.png)](../images/livermore_summer_2024/temps_2021-24.png) |
+| [![temps_2021-24.png](/assets/images/livermore_summer_2024/temps_2021-24.png)](/assets/images/livermore_summer_2024/temps_2021-24.png) |
 | *2021-2024: recent years, although not drought years, show numerous warm evening temperature excursions including a couple called out broken records.* |
-| [![temps_2014-17.png](../images/livermore_summer_2024/temps_2014-17.png)](../images/livermore_summer_2024/temps_2014-17.png) |
+| [![temps_2014-17.png](/assets/images/livermore_summer_2024/temps_2014-17.png)](/assets/images/livermore_summer_2024/temps_2014-17.png) |
 | *2014-2017: a period of extended drought also had numerous warm evening temperature excursions.  (Note that 2016 had fewer excursions that the other years in this period and was more typical.)* |
-| [![temps_2004-06.png](../images/livermore_summer_2024/temps_2004-06.png)](../images/livermore_summer_2024/temps_2004-06.png) |
+| [![temps_2004-06.png](/assets/images/livermore_summer_2024/temps_2004-06.png)](/assets/images/livermore_summer_2024/temps_2004-06.png) |
 | *2004-2006: for comparison, the first few years of the 20 history exhibit relatively few large temperature excursions (> 10°F above the mean) and the distribution of temperatures is well bracketed by the standard deviation about the mean.* |
 
 I binned the number of excessively warm evenings by year.  This figure (below) immediately highlights the years 2014, 2015, and 2017 as banner years for number of warm evenings.  These years were part of a multi-year drought in California.  Further, I would argue that this figure suggests a general upward trend in the number of warm evenings over the last 20 years.  
@@ -55,9 +55,9 @@ I then wanted to look at a finer temporal resolution, so I binned the data into 
 
 | Evening temperature histories at the Livermore Airport |
 |:--:|
-| [![temps_annual.png](../images/livermore_summer_2024/temps_annual.png)](../images/livermore_summer_2024/temps_annual.png) |
+| [![temps_annual.png](/assets/images/livermore_summer_2024/temps_annual.png)](/assets/images/livermore_summer_2024/temps_annual.png) |
 | *Annual number of days exceeding the seasonal mean by more than 10°F.  Note that the record for 2024 ends in October and so does not represent a complete year.* |
-| [![temps_quarterly.png](../images/livermore_summer_2024/temps_quarterly.png)](../images/livermore_summer_2024/temps_quarterly.png) |
+| [![temps_quarterly.png](/assets/images/livermore_summer_2024/temps_quarterly.png)](/assets/images/livermore_summer_2024/temps_quarterly.png) |
 | *Number of days per quarter exceeding the seasonal mean by more than 10°F.  The key point is that the summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the period of drought: 2014-2017.* |
 
 
@@ -70,9 +70,9 @@ One key take-away from this data is that there were extended periods of unusuall
 
 | Ocean Buoy #46214 Temperature Log |
 |:--:|
-| [![ocean_temp_statistics.png](../images/livermore_summer_2024/ocean_temp_statistics.png)](../images/livermore_summer_2024/ocean_temp_statistics.png) |
+| [![ocean_temp_statistics.png](/assets/images/livermore_summer_2024/ocean_temp_statistics.png)](/assets/images/livermore_summer_2024/ocean_temp_statistics.png) |
 | *Daily mean ocean surface temperature, taken over a 5 day rolling window, and its standard deviation.*  |
-| [![ocean_buoy_temps.png](../images/livermore_summer_2024/ocean_buoy_temps.png)](../images/livermore_summer_2024/ocean_buoy_temps.png) |
+| [![ocean_buoy_temps.png](/assets/images/livermore_summer_2024/ocean_buoy_temps.png)](/assets/images/livermore_summer_2024/ocean_buoy_temps.png) |
 | *The monthly percentage [%] of days that exceed the mean seasonal ocean temperature by one standard deviation (i.e. percent of days 1-sigma above the mean) for 20 years of temperature data taken from ocean buoy #46214 off the coast from San Francisco.*  | 
 
 ## Summary
@@ -82,7 +82,7 @@ shown below.  By-eye, this plot seems to suggest a correlation between the frequ
 
 | Quarterly warm evenings count in Livermore compared to ocean surface temperature over 20 years.|
 |:--:|
-| [![temps_quarterly_w_ocean_buoy.png](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](../images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png) |
+| [![temps_quarterly_w_ocean_buoy.png](/assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png)](/assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png) |
 | *Number of evenings per seasonal quarter exceeding the mean on that date by more than 10°F.  The summer quarter (Jul-Sep) of 2024 had the most exceptionally warm evenings, specifically 15, of any quarter of the last 20 years, including the multi-year drought of 2014-2017.  Also, exceptional ocean surface temperatures off the coast of California generally correlate with frequency of warm evenings.* |
 
 The point of this exercise is to quantify my perception that the summer of 2024 was particularly warm.  Indeed, this summer had the most extreme temperature days (15) of any season over the last 20 years (followed by 14 days in the summer of 2020 and 12 to 13 days each in various seasons of drought years 2013, 2014, 2015, 2017).  Out of curiosity, I also compared this to extrema in offshore ocean surface temperatures.  By eye, strong ocean temperature warming excursions during the aforementioned drought years as well as the 2023/2024 Winter months appear to correlate with the frequency of warm summer days in Livermore.  While this correlation is interesting and suggestive of a plausible link between offshore ocean and Livermore air temperatures, it isn't possible to draw hard conclusions from it.
