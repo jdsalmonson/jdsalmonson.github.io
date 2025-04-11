@@ -1,0 +1,133 @@
+---
+layout: post
+title: 'Quantifying the Thermal Benefits of Replacement of my House's Front Door'
+categories: [Physics, Climate, Livermore, Electronics]
+image: /assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png
+---
+
+<!-- [![New_Old_Door.jpeg](/assets/images/new_door_thermo/New_Old_Door.jpeg)](/assets/images/new_door_thermo/New_Old_Door.jpeg) -->
+
+<div style="text-align: center;">
+<img src="/assets/images/new_door_thermo/New_Old_Door.jpeg" width="600" alt="New_Old_Door.jpeg" />
+</div>
+
+## Abstract
+
+Herein I quantify the thermal effect of replacing the front door of my house.  I acquired data with two temperature sensors I built using ESP32 microcontrollers and deployed inside and outside the house.  Two weeks of temperature data were acquired both before and after the door replacement.  The relative overnight cooling rates inside and outside the house, in the absence of artificial heat sources, are compared to Newton's Law of Cooling, i.e. the rate of indoor temperature decrease should be proportional to the temperature difference between the inside and outside of the house.  This basic analysis indicates that the cooling timescale of the house did increase with the replacement of the door, as expected.  However, this analysis also uncovers a more complex inside air temperature relaxation profile, presumably because inside air temperature is influenced both by conductive cooling from the house walls as well as from air leaking directly from the outside.  In order to address this a model is constructed that dynamically couples the indoor and outdoor air temperatures with an (unmeasured) temperature of the walls of the house.  Fitting this model to the data yields best-fit cooling constants for this system both before and after door replacement that acceptably capture the house cooling dynamics; both wall conduction and leaks of outside air.  These fits to the house cooling system indicate that replacement of the door increased the cooling time constant of the house by as much as 10%: from 26 to 28 hours, also the impact of air leaks was substantially reduced.
+
+---
+
+## Data Collection
+
+In anticipation of a long overdue replacement of the antique (estimated 1860's) front door to my house with a modern, weatherproof version, I constructed a couple basic temperature sensors.  To do this I used a couple of extra [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html?srsltid=AfmBOorm6VqDA1EE2GMdlkGD49jS8rrfBPsX4YdDZpzPoyrdKdV7dI3O) microcontrollers that I had laying around.  I've come to like the [ESP-IDF](https://github.com/espressif/esp-idf) development framework for programming the ESP32 family of chips.  The microcontroller interfaces with an MCP9808 temperature sensor over I<sup>2</sup>C and makes the data available by running a webserver on my WiFi network.  It queries the temperature sensor every second with a ```read_temperature(&current_temperature)``` call.  The webserver can receive two URI requests; one for the temperature and another for WiFi radio connection signal strength.  Each device runs a mDNS service that allows it to be found on my network with the name ```temp-sensor-1``` or ```temp-sensor-2``` respectively.
+
+| Temperature sensors |
+|:--:|
+| <img src="/assets/images/new_door_thermo/temperature_sensors.jpeg" width="600" alt="temperature_sensors.jpeg" /> |
+| *My identical pair of remote temperature sensors.  Each is based on a XIAO ESP32S3 microcontroller that polls the MCP9808 temperature sensor via an I<sup>2</sup>C interface and runs a web server connected to my WiFi network to which it posts the data.  The rectangular WiFi antenna sticks out to the right of each ESP32 board.* |
+
+I collected roughly two weeks of data both before and after the door replacement.  All internal heating (i.e. the furnace) was turned off each night so the house was allowed to naturally cool overnight from roughly the same initial temperature (~ 70° Fahrenheit).  Plotting the raw indoor and outdoor temperatures over the entire duration (below) shows the diurnal oscillation period of the outdoor temperature (blue) as well as the nightly cooling curve (starting around midnight, signified by the vertical date line) of the inside temperature (red), however, beyond that, this data doesn't yield any obvious trends to my eye.  More analysis will need to be employed to see if there are underlying trends.
+
+[![total_temperature_vs_time.png](/assets/images/new_door_thermo/total_temperature_vs_time.png)](/assets/images/new_door_thermo/total_temperature_vs_time.png)
+
+---
+
+### Data Analysis
+
+The initial goal of this study is to model the nighttime cooling profiles with [Newton's Law of Cooling](https://en.wikipedia.org/wiki/Newton's_law_of_cooling).  Specifically, I assume that the rate of change of the house's inside temperature, $T_i$, is proportional to the difference between the outside and inside temperatures, $T_o - T_i$:
+
+$$
+\begin{equation}
+\frac{dT_i}{dt} = K(T_o - T_i)
+\end{equation}
+$$
+
+which is simply to say that the colder it is outside, the faster the house will cool off.  The goal is to determine the cooling constant, $K$, both before and and after door replacement to see if it is different.  In theory $K$ will be smaller after the door is replaced, meaning the house will cool more slowly for a given temperature difference $T_o - T_i$. 
+
+The temperature history is filtered to select the nightly segments of time for which the furnace is off and the house cools naturally.  This nightly cooling data is shown in the [figures below](#cooling-data-segments).  Note that there is typically a period of relatively rapid cooling, ~1°C/hour, for roughly an hour at the beginning of the evening, when the heat is first turned off.  This is presumably due to cold outside air leaking into a porous house and replacing a portion of the warm, inside air (we will address this with the [dynamical model](#solving-a-more-complete-dynamical-cooling-model)).  Also, in the morning, after sunrise (but before the denizens have turned on the furnace) there is often a rapid decline in the cooling rate as well as the temperature difference between the inside and outside, as the outdoors begin to warm.  (Note that the time of sunrise is calculated for each day for my location in Livermore, CA.)  Both of these epochs present more complex dynamics than the simple cooling law we are interested in modeling, so we discard them both for our fits.  These appropriately filtered nightly cooling segments can now be parametrically plotted with the inside temperature cooling rate versus the temperature difference between the inside and outside, shown below.  This is the correlation we wish to fit to Newton's Law of Cooling and the respective fits for the Old and New door are plotted.  This gives the initial result that for the Old Door, $1/K = 23.6$ hours and for the new door, $1/K = 24.2$ hours.  As such it appears that the replacement of the door has increased the cooling timescale of the house by a bit over a half an hour, or about 2%, which is encouraging!  Interestingly, the residuals of these fits show an anticorrelation: the cooling rate tends to slowly decrease throughout the night faster than the difference between inside and outside temperatures would predict.  So there appears to be some cooling behavior beyond what is predicted by a simple application of Newton's Law of Cooling.
+
+<table style="width:100%; border-collapse: collapse; border: 1px solid black;">
+  <tr>
+    <th colspan="2" style="border: 1px solid black;">Temperature Difference vs Inside Cooling Rate</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; width: 50%;">
+      <a href="/assets/images/new_door_thermo/old_door_parametric_plot_linear_fit.png">
+        <img src="/assets/images/new_door_thermo/old_door_parametric_plot_linear_fit.png" alt="Old Door Parametric Plot" style="width: 100%;"/>
+      </a>
+    </td>
+    <td style="border: 1px solid black; width: 50%;">
+      <a href="/assets/images/new_door_thermo/new_door_parametric_plot_linear_fit.png">
+        <img src="/assets/images/new_door_thermo/new_door_parametric_plot_linear_fit.png" alt="New Door Parametric Plot" style="width: 100%;"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border: 1px solid black; text-align: center;">
+      <em>Parametric plots of each night's cooling segments with the Old (left) and New (right) doors.  The best fit for Newton's Law of Cooling is shown for each.  Data (dashed lines) at the beginning of each evening's cooling curve and after sunrise is excluded from the fit (see text for details).  Note a systematic anticorrelation in the residual plots: the cooling rate decreases more slowly than the temperature difference over the course of the evening.</em>
+    </td>
+  </tr>
+</table>
+
+
+
+---
+
+### Solving a More Complete Dynamical Cooling Model
+
+Upon consideration, it appears that a more elaborate process is at play.  The indoor air temperature has relatively little heat capacity compared to the house or the great outdoors and so is significantly influenced both by being in contact with the walls of the house as well as by leakage of air from the outdoors.  Unfortunately, we don't directly measure the wall temperature, but we can model the dynamical cooling of both the walls of the house as well as the indoor air temperatures as they interact with the outdoor temperature.  So we define a model where air and walls of the house are driven by their interactions with their counterparts 
+
+$$
+\begin{align}
+\text{(indoor cooling rate)} &= \text{(warming by the walls)} + \text{(leakage from outdoor air)} \\
+\text{(wall cooling rate)} &= \text{(cooling by outdoor air)} + \text{(cooling by indoor air)}
+\end{align}
+$$
+
+which can be written more precisely as
+
+$$
+\begin{align}
+\frac{dT_i}{dt} &= K_1(T_w - T_i) + K_2(T_o - T_i) \\
+\frac{dT_w}{dt} &= K_3(T_o - T_w) + K_4(T_i - T_w) \ \ .
+\end{align}
+$$
+
+ The walls of the house will have signficant heat capacity and thus their temperature, $T_w$, will change the most slowly.  The indoor air temperature, $T_i$, has relatively small heat capacity and will react strongly to contact with the walls and leakage of outside air.  Our goal is to indirectly infer the cooling of the wall as well as the mixing of leaked outside air solely from the observations of the inside air temperature.
+
+ The model is as follows: when the furnace it turned off at night it is assumed that the walls of the house and the air inside are at the same temperature, i.e. $T_w(t=0) = T_i(t=0)$.  The inside air temperature, with its relatively small heat capacity, will cool faster than the wall due to cool outside air leaking into the house via the $K_2$ term.  This relatively rapid cool down of the inside aire due to leakage with eventually be offset by the now warmer walls heating the air via the $K_1$ term.  The walls of the house, with their large heat capacity, will cool slowly by contact with the outside via the $K_3$ term, which is the dominant term of the system.  Since the heat capacity of the inside air is much, much smaller than that of the house, we can safely neglect the inside air heating the walls, so we set
+
+ $$
+ K_4 = 0 \ \ .
+ $$
+
+As such we have a three-parameter model for the cooling of the inside air, $T_i$, and house walls, $T_w$, in the presence of a measured outdoor temperature, $T_o(t)$.  Since we have also measured the inside air, $T_i(t)$, we can fit the solution, $T_{i,\text{sol}}(t)$, of this set of ODEs to the measured $T_i(t)$ and find the parameters $K_1$, $K_2$, $K_3$ that give the best match via a least-squares minimization: $\text{min}((T_{i,\text{sol}}(t) - T_i(t))^2)$.  Performing this optimization for both the Old Door and New Door data will provide information about how the cooling model of the house has changed due to the door replacement.
+
+
+---
+Appendix
+
+<!-- <a name="cooling-data-segments"></a> -->
+### Cooling Data Segments
+<table style="width:100%; border-collapse: collapse; border: 1px solid black;">
+  <tr>
+    <th colspan="2" style="border: 1px solid black;">Night-time Cooling Data Segments</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black; width: 50%;">
+      <a href="/assets/images/new_door_thermo/old_door_segments.png">
+        <img src="/assets/images/new_door_thermo/old_door_segments.png" alt="Old Door Segments" style="width: 100%;"/>
+      </a>
+    </td>
+    <td style="border: 1px solid black; width: 50%;">
+      <a href="/assets/images/new_door_thermo/new_door_segments.png">
+        <img src="/assets/images/new_door_thermo/new_door_segments.png" alt="New Door Segments" style="width: 100%;"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="border: 1px solid black; text-align: center;">
+      <em>Comparison of cooling data before (left) and after (right) door replacement.  The left plot of each pair is simply the raw temperature data from each sensor.  On the right plot of each pair, the data excluded from the fit is dashed; specifically the first 60 minutes of cooling and data after (date specific) sunrise.  The cooling (magenta) and temperature difference (black) curves are scaled by the fit to give intuition for how good it is.  A careful eye will notice that the cooling rate (magenta) tends to decrease slightly faster than the temperature difference (black) over the course of the night.</em>
+    </td>
+  </tr>
+</table>
