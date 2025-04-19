@@ -14,8 +14,25 @@
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/images/favicon-32x32.png">
   {% include analytics_head.html %}
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?
-   config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- Very old: <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?
+   config=TeX-AMS-MML_HTMLorMML"></script> -->
+  <!-- This overrides mathJax settings so that $x=1$ works in-line-->
+  <script type="text/javascript">
+    window.MathJax = {
+      loader: { load: ['input/tex', 'output/chtml'] },
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <!-- This is the new MathJax 3 which is much faster and more modern (April 2025)-->
+  <script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 
 <body>
