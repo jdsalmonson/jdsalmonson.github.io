@@ -1,21 +1,24 @@
 ---
 layout: post
-title: 'Quantifying the Thermal Benefits of Replacement of my House's Front Door'
+#title: "Quantifying the Thermal Benefits of Replacement of my House\'s Front Door"
+title: "Quantifying the Thermal Benefits of Replacement of the Front Door of my House"
 categories: [Physics, Climate, Livermore, Electronics]
-image: /assets/images/livermore_summer_2024/temps_quarterly_w_ocean_buoy.png
+image: /assets/images/new_door_thermo/cooling_constant_distribution.png
 ---
 
 <!-- [![New_Old_Door.jpeg](/assets/images/new_door_thermo/New_Old_Door.jpeg)](/assets/images/new_door_thermo/New_Old_Door.jpeg) -->
+[![cooling_constant_distribution.png](/assets/images/new_door_thermo/cooling_constant_distribution.png)](/assets/images/new_door_thermo/cooling_constant_distribution.png)
 
-<div style="text-align: center;">
-<img src="/assets/images/new_door_thermo/New_Old_Door.jpeg" width="600" alt="New_Old_Door.jpeg" />
-</div>
 
 ## Abstract
 
 Herein I quantify the thermal effect of replacing the front door of my house.  I acquired data with two temperature sensors I built using ESP32 microcontrollers and deployed inside and outside the house.  Two weeks of temperature data were acquired both before and after the door replacement.  The relative overnight cooling rates inside and outside the house, in the absence of artificial heat sources, are compared to Newton's Law of Cooling, i.e. the rate of indoor temperature decrease should be proportional to the temperature difference between the inside and outside of the house.  This basic analysis indicates that the cooling timescale of the house did increase with the replacement of the door, as expected.  However, this analysis also uncovers a more complex inside air temperature relaxation profile, presumably because inside air temperature is influenced both by conductive cooling from the house walls as well as from air leaking directly from the outside.  In order to address this a model is constructed that dynamically couples the indoor and outdoor air temperatures with an (unmeasured) temperature of the walls of the house.  Fitting this model to the data yields best-fit cooling constants for this system both before and after door replacement that acceptably capture the house cooling dynamics; both wall conduction and leaks of outside air.  These fits to the house cooling system indicate that replacement of the door increased the cooling time constant of the house by as much as 10%: from 26 to 28 hours, also the impact of air leaks was substantially reduced.
 
 ---
+
+<div style="text-align: center;">
+<img src="/assets/images/new_door_thermo/New_Old_Door.jpeg" width="600" alt="New_Old_Door.jpeg" />
+</div>
 
 ## Data Collection
 
@@ -271,6 +274,11 @@ All three parameters, $K_1$, $K_2$, $K_3$ indicate weaker coupling after the New
     </td>
   </tr>
 </table>
+
+___
+Reference:
+
+- [temperature_sensor_esp32_mcp9808](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808) - Repository of data and analysis for this notebook
 
 ---
 Appendix
