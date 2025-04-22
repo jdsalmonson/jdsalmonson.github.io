@@ -12,7 +12,7 @@ image: /assets/images/new_door_thermo/cooling_constant_distribution.png
 
 ## Abstract
 
-Herein I quantify the thermal effect of replacing the front door of my house.  I acquired data with two temperature sensors I built using ESP32 microcontrollers and deployed inside and outside the house.  Two weeks of temperature data were acquired both before and after the door replacement.  The relative overnight cooling rates inside and outside the house, in the absence of artificial heat sources, are compared to Newton's Law of Cooling, i.e. the rate of indoor temperature decrease should be proportional to the temperature difference between the inside and outside of the house.  This basic analysis indicates that the cooling timescale of the house did increase with the replacement of the door, as expected.  However, this analysis also uncovers a more complex inside air temperature relaxation profile, presumably because inside air temperature is influenced both by conductive cooling from the house walls as well as from air leaking directly from the outside.  In order to address this a model is constructed that dynamically couples the indoor and outdoor air temperatures with an (unmeasured) temperature of the walls of the house.  Fitting this model to the data yields best-fit cooling constants for this system both before and after door replacement that acceptably capture the house cooling dynamics; both wall conduction and leaks of outside air.  These fits to the house cooling system indicate that replacement of the door increased the cooling time constant of the house by as much as 10%: from 26 to 28 hours, also the impact of air leaks was substantially reduced.
+Herein I quantify the thermal effect of replacing the front door of my house.  I acquired data with two temperature sensors I built using ESP32 microcontrollers and deployed inside and outside the house.  Two weeks of temperature data were acquired both before and after the door replacement.  The relative overnight cooling rates inside and outside the house, in the absence of artificial heat sources, are compared to Newton's Law of Cooling, i.e. that the rate of indoor temperature decrease is proportional to the temperature difference between the inside and outside of the house.  This basic analysis indicates that the cooling timescale of the house is about 24 hours and did increase with the replacement of the door, as expected, by about 30 minutes or 2%.  However, this analysis also uncovers a more complex inside air temperature relaxation profile, presumably because inside air temperature is influenced both by conductive cooling from the house walls as well as from air leaking directly from the outside.  In order to address this a model is constructed that dynamically couples the indoor and outdoor air temperatures with an (unmeasured) temperature of the walls of the house.  Fitting this model to the data yields best-fit cooling constants for this system both before and after door replacement that acceptably capture the house cooling dynamics; both wall conduction and leaks of outside air.  These fits to the house cooling system indicate that replacement of the door increased the cooling time constant of the house by as much as 10%: from 26 to 28 hours, also the impact of air leaks was substantially reduced.  The data and analysis details for this blog post are in a [github repository](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808/tree/main).
 
 ---
 
@@ -22,7 +22,7 @@ Herein I quantify the thermal effect of replacing the front door of my house.  I
 
 ## Data Collection
 
-In anticipation of a long overdue replacement of the antique (estimated 1860's) front door to my house with a modern, weatherproof version, I constructed a couple basic temperature sensors.  To do this I used a couple of extra [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html?srsltid=AfmBOorm6VqDA1EE2GMdlkGD49jS8rrfBPsX4YdDZpzPoyrdKdV7dI3O) microcontrollers that I had laying around.  I've come to like the [ESP-IDF](https://github.com/espressif/esp-idf) development framework for programming the ESP32 family of chips.  The microcontroller interfaces with an MCP9808 temperature sensor over I<sup>2</sup>C and makes the data available by running a webserver on my WiFi network.  It queries the temperature sensor every second with a ```read_temperature(&current_temperature)``` call.  The webserver can receive two URI requests; one for the temperature and another for WiFi radio connection signal strength.  Each device runs a mDNS service that allows it to be found on my network with the name ```temp-sensor-1``` or ```temp-sensor-2``` respectively.
+In anticipation of a long overdue replacement of the antique (estimated 1860's) front door to my house with a modern, weatherproof model, I constructed a couple basic temperature sensors.  To do this I used a couple of extra [XIAO ESP32S3](https://www.seeedstudio.com/XIAO-ESP32S3-p-5627.html?srsltid=AfmBOorm6VqDA1EE2GMdlkGD49jS8rrfBPsX4YdDZpzPoyrdKdV7dI3O) microcontrollers that I had laying around.  I've come to like the [ESP-IDF](https://github.com/espressif/esp-idf) development framework for programming the ESP32 family of chips.  The code to program the ESP32S3 is [here](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808/tree/main/esp32_wifi).  The microcontroller interfaces with an MCP9808 temperature sensor over I<span style="vertical-align: super;">2</span>C and makes the data available by running a webserver on my WiFi network.  It queries the temperature sensor every second with a [```read_temperature(&current_temperature)```](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808/blob/main/esp32_wifi/main/main.c#L80) call.  The webserver can receive two URI requests; one for the temperature and another for WiFi radio connection signal strength.  Each device runs a mDNS service that allows it to be found on my network with the name ```temp-sensor-1``` or ```temp-sensor-2``` respectively.  I then run a python script [```temperature_logger.py```](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808/blob/main/scripts/temperature_logger.py) on a computer that queries and logs the temperature from each device.
 
 | Temperature sensors |
 |:--:|
@@ -74,7 +74,7 @@ The temperature history is filtered to select the nightly segments of time for w
   </tr>
 </table>
 
-There is some uncertainty in the fit of the cooling constant depending how much of the early rapid-cooling phase to include, how much data before or after sunsrise should be included and since the cooling rate, dT$_i$/dt, is a derivative which can be noisy, the amount of smoothing applied with make a difference.  For that reason I model the data over an ensemble of variations of these parameters, specifically:
+There is some uncertainty in the fit of the cooling constant depending how much of the early rapid-cooling phase to include, how much data before or after sunsrise should be included and since the cooling rate, $dT_{i}/dt$, is a derivative which can be noisy, the amount of smoothing applied with make a difference.  For that reason I model the data over an ensemble of variations of these parameters, specifically:
 
 - initial time to skip: 60 to 80 minutes
 - end time relative to sunrise: -30 to 30 minutes
@@ -97,14 +97,14 @@ An ensemble of 200 fits are constructed for both the old and new door data, rand
   </tr>
   <tr>
     <td colspan="2" style="border: 1px solid black; text-align: center;">
-      <em>The distribution of fits of the cooling constant for both the Old and New door gives a distribution that is significantly longer for the Old door than for the New door (Top figure).  Plotting the difference between these cooling curves (Bottom figure) gives a mean difference of roughly 0.5 ± 0.12 hours (30 ± 7 minutes).  Note that, although I'm calculating a standard deviation, this distribution has a p-value of 0.0 and so is not normal.  This suggests that replacement of the old door has increased the 24 hour cooling time by roughly a half hour, or 2%.  This is a non-negligible increase.</em>
+      <em>The distribution of fits of the cooling constant for both the Old and New door gives a distribution that is significantly longer for the Old door than for the New door (Left figure).  Plotting the difference between these cooling curves (Right figure) gives a mean difference of roughly 0.52 ± 0.12 hours (31 ± 7 minutes).  Note that, although I'm calculating a standard deviation, this distribution has a p-value of 0.0 and so is not normal.  This suggests that replacement of the old door has increased the 24 hour cooling time by roughly a half hour, or 2%.  This is a small, but non-negligible increase.</em>
     </td>
   </tr>
 </table>
 
 #### Time Dependent Cooling
 
-As previously mentioned, Newton's Cooling Law doesn't fully explain the data.  On a given night, the rate of cooling tends to decrease a little faster than the decrease in the temperature difference between the inside and outside as can be seen from the [cooling segments data](#cooling-data-segments).
+As previously mentioned, Newton's Cooling Law doesn't fully explain the data.  On a given night, the rate of cooling tends to decrease a little faster than the decrease in the temperature difference between the inside and outside as can be seen from the [cooling segments data](#cooling-data-segments).  So we can attempt to fit a more elaborate cooling law with a time dependence to the cooling rate
 
 $$
 \begin{equation}
@@ -112,7 +112,7 @@ $$
 \end{equation}
 $$
 
-where $\tau$ is the time in the cooling segment.  We fit this function from the beginning of each cooling segment, i.e. $\tau = t$, and also from the end of the segment, i.e. $\tau = t\_1 - t$ where $t\_1$ is the last time in the segment.  As with the previous time independent cooling law fit, an ensemble of 200 fits of this function are performed, varying the segment start and end time and resampling window.  The resulting histograms are plotted below.  A key observation is that when fitting this temporally decaying function from the start of the segment (so $K$ is representative of the decay constant at the beginnings of the segments) the decay constant is shorter, $1/K ~ 21$ hours, than the constant-time fit above; $1/K ~ 24$ hours.  Also, when fitting from the end of the segment, when the cooling rate tends to be lowest, the decay constant is significantly longer; $1/K ~ 29$ hours.  
+where $\tau$ is the time within the cooling segment.  We fit this function from the beginning of each cooling segment, i.e. $\tau = t$, and also from the end of the segment, i.e. $\tau = t\\_1 - t$ where $t\\_1$ is the last time in the segment.  As with the previous time independent cooling law fit, an ensemble of 200 fits of this function are performed, varying the segment start and end time and resampling window.  The resulting histograms are plotted below.  A key observation is that when fitting this temporally decaying function from the start of the segment (so $K$ is representative of the decay constant at the beginnings of the segments) the decay constant is shorter, $1/K \approx 21$ hours, than the constant-time fit above; $1/K \approx 24$ hours.  Also, when fitting from the end of the segment, when the cooling rate tends to be lowest, the decay constant is significantly longer; $1/K \approx 29$ hours.  
 
 The key take-away is that the observation of the longer decay constant in New door as compared to the Old door persists in these data.  Fitting the cooling time decay from the beginning of the segments gives $1/K$ of 20.8 and 21.5 hours for the Old and New doors respectively, and measuring from the end of the pulse gives 28.4 and 29.1 hours.  This is consistent with the previous result that the cooling timescale of the house was increased by roughly 30 minutes by replacing the Old door.  
 
@@ -135,7 +135,7 @@ The cooling rate time decay constant, $b$, doesn't exhibit an offset between the
   </tr>
     <tr>
     <td colspan="2" style="border: 1px solid black; text-align: center;">
-      <em>Time-dependent cooling constants.  The key take-away is that the cooling timescale $1/K$ for these fits shows the same difference between the Old and New door as observed in the time independent fit; the New door's cooling constant is roughly 30 minutes longer than that of the Old door.</em>
+      <em>Time-dependent cooling constants.  The key take-away is that the cooling timescale 1/K for these fits shows the same difference between the Old and New door as observed in the time independent fit; the New door's cooling constant is roughly 30 minutes longer than that of the Old door.</em>
     </td>
   </tr>
 </table>
@@ -164,7 +164,7 @@ $$
 
  The walls of the house will have signficant heat capacity and thus their temperature, $T_w$, will change the most slowly.  The indoor air temperature, $T_i$, has relatively small heat capacity and will react strongly to contact with the walls and leakage of outside air.  Our goal is to indirectly infer the cooling of the wall as well as the mixing of leaked outside air solely from the observations of the inside air temperature.
 
- The model is as follows: when the furnace it turned off at night it is assumed that the walls of the house and the air inside are at the same temperature, i.e. $T_w(t=0) = T_i(t=0)$.  The inside air temperature, with its relatively small heat capacity, will cool faster than the wall due to cool outside air leaking into the house via the $K_2$ term.  This relatively rapid cool down of the inside aire due to leakage with eventually be offset by the now warmer walls heating the air via the $K_1$ term.  The walls of the house, with their large heat capacity, will cool slowly by contact with the outside via the $K_3$ term, which is the dominant term of the system.  Since the heat capacity of the inside air is much, much smaller than that of the house, we can safely neglect the inside air heating the walls, so we set
+ The model is as follows: when the furnace it turned off at night it is assumed that the walls of the house and the air inside are at the same temperature, i.e. $T_w(t=0) = T_i(t=0)$.  The inside air temperature, with its relatively small heat capacity, will cool faster than the wall due to cool outside air leaking into the house via the $K_2$ term.  This relatively rapid cool down of the inside air due to leakage will eventually be offset by the now warmer walls heating the air via the $K_1$ term.  The walls of the house, with their large heat capacity, will cool slowly by contact with the outside via the $K_3$ term, which is the dominant term of the system.  Since the heat capacity of the inside air is much, much smaller than that of the house, we can safely neglect the inside air heating the walls, so we set
 
  $$
  K_4 = 0 \ \ .
@@ -189,7 +189,7 @@ As such we have a three-parameter model for the cooling of the inside air, $T_i$
   </tr>
     <tr>
     <td colspan="2" style="border: 1px solid black; text-align: center;">
-      <em>Optimization of the K<sub>1</sub>, K<sub>2</sub>, and K<sub>3</sub> parameters demonstrated here by rastering through a grid of possible values for K<sub>1</sub>, K<sub>2</sub>.  At each of these points the optimal solution for K<sub>3</sub> is iteratively found to maximize the coefficient of determination, R<sup>2</sup>.  As such we get some idea of the shape of the solution manifold.  All K constants have units of 1/hour.</em>
+      <em>Optimization of the K<span style="vertical-align: sub;">1</span>, K<span style="vertical-align: sub;">2</span>, and K<span style="vertical-align: sub;">3</span> parameters demonstrated here by rastering through a grid of possible values for K<span style="vertical-align: sub;">1</span>, K<span style="vertical-align: sub;">2</span>.  At each of these points the optimal solution for K<span style="vertical-align: sub;">3</span> is iteratively found to maximize the coefficient of determination, R<span style="vertical-align: super;">2</span>.  As such we get some idea of the shape of the solution manifold.  All K constants have units of 1/hour.</em>
     </td>
   </tr>
 </table>
@@ -213,21 +213,21 @@ As such we have a three-parameter model for the cooling of the inside air, $T_i$
   </tr>
   <tr>
     <td colspan="2" style="border: 1px solid black; text-align: center;">
-      <em>Similar to the <a href="#parametric-plot-linear-fit">parametric cooling figure</a> above, but instead of data, here are the solutions to the dynamical model for each evening's cooling segment.  The dashed line shows the 1/K<sub>3</sub> slope.  This illustrates how K<sub>3</sub>, that governs how fast the house walls cool due to the outside air, acts as an asymptotic limit to the cooling rate.  This is in contrast to the parameter K used to fit the mean cooling effect seen in the data, which is why the 1/K line goes thru the center of the data.  </em>
+      <em>Similar to the <a href="#parametric-plot-linear-fit">parametric cooling figure</a> above, but instead of data, here are the solutions to the dynamical model for each evening's cooling segment.  The dashed line shows the 1/K<span style="vertical-align: sub;">3</span> slope.  This illustrates how K<span style="vertical-align: sub;">3</span>, that governs how fast the house walls cool due to the outside air, acts as an asymptotic limit to the cooling rate.  This is in contrast to the parameter K used to fit the mean cooling effect seen in the data, which is why the 1/K line goes thru the center of the data.  </em>
     </td>
   </tr>
 </table>
 
 The resulting best-fit solutions are:
 
-| Parameter | Description | Old Door | New Door |
-|-----------|-------------|----------|----------|
-| K₁ (1/K₁) | warming of inside air by house walls | 0.8 (1.25 hours) | 0.5 (2 hours) |
-| K₂ (1/K₂) | leakage of outside air to the inside | 0.07 (14.3 hours) | 0.06 (16.6 hours) |
-| K₃ (1/K₃) | cooling of the house walls by oudside air | 0.0388 (25.8 hours) | 0.0356 (28.1 hours) |
+| Parameter [1/hour (hour)]| Description | Old Door | New Door |
+|--------------------------|-------------|----------|----------|
+| K₁ (1/K₁)                | warming of inside air by house walls | 0.8 (1.25 hours) | 0.5 (2 hours) |
+| K₂ (1/K₂)                | leakage of outside air to the inside | 0.07 (14.3 hours) | 0.06 (16.6 hours) |
+| K₃ (1/K₃)                | cooling of the house walls by outside air | 0.0388 (25.8 hours) | 0.0356 (28.1 hours) |
 
 
-
+<!--
 <table style="width:70%; border-collapse: collapse; border: 1px solid black;">
   <tr>
     <th style="border: 1px solid black; padding: 8px;">Parameter</th>
@@ -254,12 +254,10 @@ The resulting best-fit solutions are:
     <td style="border: 1px solid black; padding: 8px;">0.0356 (28.1 hours)</td>
   </tr>
 </table>
+-->
 
-A key point to note from the <a href="#parameter-optimization-results">parameter optimization results</a> is that the optima for both the Old and New door are relatively broad, with a wide region of values with coefficients of determination, $R^2$, near 1.0.  As such, we will only interpret these results qualitatively.  However, this analysis suggests a general locus of parameters that reasonably fit the data.  
 
-All three parameters, $K_1$, $K_2$, $K_3$ indicate weaker coupling after the New Door was installed (i.e. the inverse of each is a longer cooling timescale).  
-
-<table style="width:50%; border-collapse: collapse; border: 1px solid black;">
+<table style="width:100%; border-collapse: collapse; border: 1px solid black;">
   <tr>
     <td style="border: 1px solid black; text-align: center;">
       <a href="/assets/images/new_door_thermo/parametric_plot_dynamical_model_comparison.png">
@@ -270,18 +268,26 @@ All three parameters, $K_1$, $K_2$, $K_3$ indicate weaker coupling after the New
   </tr>
   <tr>
     <td style="border: 1px solid black; text-align: center;">
-      <em>For reference, the dynamical cooling solutions for both the Old and New Doors along with their respective 1/K<sub>3</sub> parameter fits.  This highlights how subtle the difference between the Old and New Door solutions is.</em>
+      <em>For reference, the dynamical cooling solutions for both the Old and New Doors along with their respective 1/K<span style="vertical-align: sub;">3</span> parameter fits.  This highlights how subtle the difference between the Old (1/K<span style="vertical-align: sub;">3</span> = 25.8 hours) and New (1/K<span style="vertical-align: sub;">3</span> = 28.1 hours) Door solutions is.</em>
     </td>
   </tr>
 </table>
 
+It is a heartening result that we were able to find solutions of this dynamical system that are consistent with the hypothesized interaction of inside and outside air with the walls of the house.  The [plots of these solutions on top of the data](#cooling-data-segments-with-cooling-solutions) (below) show generally good agreement.  As such the obtained values of the cooling constants $K_1$, $K_2$, $K_3$ should give some insight into the cooling dynamics.  A key point to note from the <a href="#parameter-optimization-results">parameter optimization results</a> is that the optima for both the Old and New door are relatively broad, with a wide region of values with coefficients of determination, $R^2$, near 1.0.  As such, we will only interpret these results qualitatively.  However, again, this analysis suggests a general locus of parameters that reasonably fit the data.  
+
+All three parameters, $K_1$, $K_2$, $K_3$ indicate weaker coupling after the New Door was installed (i.e. the inverse of each is a longer cooling timescale).  As such, rather than specifying a particular cooling process having been altered by the door replacement, the fits suggest that all such cooling processes were reduced.  One wouldn't expect that $K_1$, the rate at which the house walls warm the inside air, to change much with the replacement of the door, for instance, however the best fit parameters changed by almost a factor of 2.  However, we note that the <a href="#parameter-optimization-results">parameter optimization plots</a> show a relatively flat (i.e. weak) sensitivity to $K_1$, so one could hypothesize a fixed value $K_1$ both before and after door replacement and test how that affects the solution of the other parameters.  Such elaborations in analysis would deserve a larger, more systematically careful dataset than the one acquired for this study, and so we forgo further such analysis here.
+
+#### Summary
+
+We have satisfactorily acheived the goal of measuring and quantifying the cooling rate of my house both before and after the replacement of an antique Old Door with a New modern one.  The empirical result that the cooling timescale from Newton's Law for the inside air temperature of the house is about 24 hours and increased by about 30 minutes with the replacement of the door appears to be robust, both when considering a simple, constant cooling rate and when a time dependent rate is employed to capture the extraneous cooling behavior.  Further, we hypothesized a dynamical model of both the inside and outside air interacting with the solid walls of the house as a way to explain the more complex cooling evolution seen in the data.  This model qualitatively captures the cooling rate of the inside air -- both the early, rapid cooling presumably due to outside air leaking in, as well as the gradual decrease in this cooling rate throughout the night.  To pursue this line of study further one would want to gather more data, including measurements of the wall temperature, to more rigorously test this model.
+
 ___
-Reference:
+#### Reference
 
 - [temperature_sensor_esp32_mcp9808](https://github.com/jdsalmonson/temperature_sensor_esp32_mcp9808) - Repository of data and analysis for this notebook
 
 ---
-Appendix
+#### Figure Appendix
 
 <!-- <a name="cooling-data-segments"></a> -->
 ### Cooling Data Segments
@@ -303,7 +309,7 @@ Appendix
   </tr>
   <tr>
     <td colspan="2" style="border: 1px solid black; text-align: center;">
-      <em>Comparison of cooling data before (left) and after (right) door replacement.  The left plot of each pair is simply the raw temperature data from each sensor.  On the right plot of each pair, the data excluded from the fit is dashed; specifically the first 60 minutes of cooling and data after (date specific) sunrise.  The cooling (magenta) and temperature difference (black) curves are scaled by the fit to give intuition for how good it is.  A careful eye will notice that the cooling rate (magenta) tends to decrease slightly faster than the temperature difference (black) over the course of the night.</em>
+      <em>Comparison of cooling data before (left) and after (right) door replacement.  The left plot of each pair is simply the raw temperature data from each sensor.  On the right plot of each pair, the data excluded from the fit is dashed; specifically the first 60 minutes of cooling and data after (date specific) sunrise.  The cooling (magenta) and temperature difference (black) curves are scaled by the fit to give intuition for how good it is.  A careful eye will notice that the cooling rate (magenta) tends to decrease slightly faster than the temperature difference (black) over the course of the night.  This motivates the time dependent fit.</em>
     </td>
   </tr>
 </table>
