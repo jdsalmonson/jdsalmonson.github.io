@@ -10,3 +10,7 @@ package.json
 *.gem
 *.gemspec
 .jekyll-cache
+.python-version
+uv.lock
+pyproject.toml
+main.py
