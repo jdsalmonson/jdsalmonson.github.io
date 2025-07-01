@@ -2,6 +2,7 @@
 layout: post
 title: Using AI Prompts to Create STL Files for 3D Printing
 categories: [CAD, 3D Printing, Video]
+image: /assets/images/openscad_ai/button_three_sections.png
 ---
 
 
@@ -16,7 +17,7 @@ categories: [CAD, 3D Printing, Video]
     </iframe>
 </div>
 
-It occurred to me that it should be possible to use an AI prompt to describe what I want to 3D print without using a CAD program.  While this wouldn't be a feasible solution for an elaborate CAD creation, it can be useful for quick one-off objects or prototypes.  My first idea was to use an AI agent, in this case Claude Sonnet 3.5, to generate Python code to create the STL code for the 3D printer using the [`numpy-stl`](https://pypi.org/project/numpy-stl/) package.  Interestingly, this attempt failed pretty quickly.  While the `numpy-stl` package works well at turning a mesh into an STL file, I found that the AI agent's ability to prescribe a consistent mesh was inadequate, so strange, inconsistent polygon structures would be generated that were unable to be printed.  So it occurred to me that it might be possible to use [OpenSCAD](https://openscad.org/), the open-sourced programmable 3D CAD modeler.  OpenSCAD has its own programming language for creating CAD models and is very good at generating usable STL files from this code.  It is a much simpler task for an AI agent to create the OpenSCAD code from a prompt.
+It recently occurred to me that it should be possible to use an AI prompt to describe what I want to 3D print without using a CAD program.  While this wouldn't be a feasible solution for an elaborate CAD creation, it can be useful for quick one-off objects or prototypes.  My first idea was to use an AI agent, in this case Claude Sonnet 3.5, to generate Python code to create the STL code for the 3D printer using the [`numpy-stl`](https://pypi.org/project/numpy-stl/) package.  Interestingly, this attempt failed pretty quickly.  While the `numpy-stl` package works well at turning a mesh into an STL file, I found that the AI agent's ability to prescribe a consistent mesh was inadequate, so strange, inconsistent polygon structures would be generated that were unable to be printed.  So it occurred to me that it might be possible to use [OpenSCAD](https://openscad.org/), the open-sourced programmable 3D CAD modeler.  OpenSCAD has its own programming language for creating CAD models and is very good at generating usable STL files from this code.  It is a much simpler task for an AI agent to create the OpenSCAD code from a prompt.
 
 
 My first attempt at this was to create a button from my wife's coat, as illustrated in the video above.  For reference, the OpenSCAD code for this button is available [below](#button-openscad-code).  I constructed the radial surface profile of this button from three sections of circular arc.  When I specified how I wanted these sections of arc to connect together, much like an algebra homework problem, the agent did a poor job of properly interpreting what I was asking for.  I know these agents are able to answer algebra word problems, so I'm not sure why it wasn't doing so in this case.  Ultimately, I had to do the algebra myself to give it the proper parameters, which worked fine, but was more involved than I'd hoped.  
